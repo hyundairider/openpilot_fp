@@ -423,7 +423,7 @@ class CarInterfaceBase(ABC):
       self.no_steer_warning = False
       self.silent_steer_warning = False
     if cs_out.steerFaultPermanent:
-      events.add(EventName.steerUnavailable)
+      pass #events.add(EventName.steerUnavailable)
 
     # we engage when pcm is active (rising edge)
     # enabling can optionally be blocked by the car interface

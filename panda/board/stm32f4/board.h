@@ -23,6 +23,10 @@ void detect_board_type(void) {
   if(!detect_with_pull(GPIOB, 1, PULL_UP) && !detect_with_pull(GPIOB, 7, PULL_UP)){
     hw_type = HW_TYPE_DOS;
     current_board = &board_dos;
+  // rick - for Lite, it detected as UNO before 0.9.9
+  // Confirmed with mr. one, we are safe to do so for Lite
+  } else if(!detect_with_pull(GPIOB, 15, PULL_UP)) {
+    hw_type = HW_TYPE_DOS;
   } else if((detect_with_pull(GPIOA, 4, PULL_DOWN)) || (detect_with_pull(GPIOA, 5, PULL_DOWN)) || (detect_with_pull(GPIOA, 6, PULL_DOWN)) || (detect_with_pull(GPIOA, 7, PULL_DOWN))){
     hw_type = HW_TYPE_WHITE_PANDA;
     current_board = &board_white;
